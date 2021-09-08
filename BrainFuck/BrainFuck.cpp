@@ -21,11 +21,6 @@ namespace BrainFuck // Implementation of Interpreter
 		}
 	}
 
-	std::string Interpreter::GetOutput()
-	{
-		return m_str;
-	}
-
 	void Interpreter::TranslateCommands(std::string commands)
 	{
 		for (char command : commands) // Interpreting commands into procedure objects
@@ -129,7 +124,7 @@ namespace BrainFuck // Implementation of Procedure subclasses
 
 				if (cur_id == ProcedureID::OpenBracket)
 				{
-					(*(*procedure_iter)).Action(str_iter,procedure_iter);
+					(*(*procedure_iter)).Action(str_iter, procedure_iter);
 				}
 
 			} while (cur_id != ProcedureID::CloseBracket);
@@ -156,6 +151,6 @@ namespace BrainFuck // Implementation of Procedure subclasses
 
 	void Interpreter::Dot::Action(strIter& str_iter, vectIter& procedure_iter)
 	{
-		std::cout << *str_iter;
+		std::cout<< (*str_iter);
 	}
 }

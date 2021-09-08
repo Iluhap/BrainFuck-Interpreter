@@ -30,8 +30,6 @@ namespace BrainFuck
 
 		void ExecuteProgram();
 
-		std::string GetOutput();
-
 	private: // Helper methods
 
 		Interpreter();
@@ -49,8 +47,6 @@ namespace BrainFuck
 		std::vector<pProcedure> m_procedures;
 		vectIter m_procedure_iter;
 
-		std::string output_str;
-	
 	private:
 
 		class RightArrow;
@@ -63,7 +59,7 @@ namespace BrainFuck
 
 	};
 
-	
+
 	class Interpreter::Procedure
 	{
 	public:
