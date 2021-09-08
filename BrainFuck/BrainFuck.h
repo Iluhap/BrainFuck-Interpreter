@@ -48,6 +48,8 @@ namespace BrainFuck
 
 		std::vector<pProcedure> m_procedures;
 		vectIter m_procedure_iter;
+
+		std::string output_str;
 	
 	private:
 
@@ -61,6 +63,7 @@ namespace BrainFuck
 
 	};
 
+	
 	class Interpreter::Procedure
 	{
 	public:
@@ -68,6 +71,7 @@ namespace BrainFuck
 		virtual ProcedureID GetID() { return ProcedureID::None; }
 	};
 
+	// ---------- Declaration of internal Procedure subclasses ---------- //
 
 	class Interpreter::RightArrow : public Procedure
 	{

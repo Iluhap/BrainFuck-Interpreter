@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClCompile Include="BrainFuck.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Procedure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BrainFuck.h" />

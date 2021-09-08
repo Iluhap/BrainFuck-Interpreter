@@ -1,6 +1,6 @@
 #include "BrainFuck.h"
 
-namespace BrainFuck
+namespace BrainFuck // Implementation of Interpreter
 {
 	// ---------- Class methods ---------- //
 	Interpreter::Interpreter(std::string code)
@@ -126,6 +126,12 @@ namespace BrainFuck // Implementation of Procedure subclasses
 			{
 				procedure_iter++;
 				cur_id = (*(*procedure_iter)).GetID();
+
+				if (cur_id == ProcedureID::OpenBracket)
+				{
+					(*(*procedure_iter)).Action(str_iter,procedure_iter);
+				}
+
 			} while (cur_id != ProcedureID::CloseBracket);
 		}
 	}
@@ -137,6 +143,12 @@ namespace BrainFuck // Implementation of Procedure subclasses
 		{
 			procedure_iter--;
 			cur_id = (*(*procedure_iter)).GetID();
+
+			if (cur_id == ProcedureID::CloseBracket)
+			{
+				(*(*procedure_iter)).Action(str_iter, procedure_iter);
+			}
+
 		} while (cur_id != ProcedureID::OpenBracket);
 
 		procedure_iter--;
