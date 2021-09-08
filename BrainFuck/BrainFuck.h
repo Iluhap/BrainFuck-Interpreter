@@ -6,9 +6,24 @@
 
 namespace BrainFuck
 {
+	/*
+	* Main class used to create object that receive BrainFuck code as parameter
+	* interpret code into procedure model 
+	* and execute it   
+	*/
 	class Interpreter
 	{
+	public: // Class interface
+
+		Interpreter(std::string code);
+
+		void ExecuteProgram();
+
 	private:
+
+		/*
+		* Class used to identify procedures
+		*/
 		enum class ProcedureID
 		{
 			None,
@@ -18,17 +33,14 @@ namespace BrainFuck
 			Dot
 		};
 
+		/*
+		* Class represents interface of model items 
+		*/
 		class Procedure;
 
 		typedef std::unique_ptr<Procedure> pProcedure;
 		typedef std::vector<pProcedure>::iterator vectIter;
 		typedef std::string::iterator strIter;
-
-	public: // Interface
-
-		Interpreter(std::string code);
-
-		void ExecuteProgram();
 
 	private: // Helper methods
 
@@ -41,13 +53,14 @@ namespace BrainFuck
 		Procedure* CreateProcedure(ProcedureID id);
 
 	private: // Data members
+
 		std::string m_str;
 		strIter m_str_iter;
 
 		std::vector<pProcedure> m_procedures;
 		vectIter m_procedure_iter;
 
-	private:
+	private: // Procedure subclasses announcement
 
 		class RightArrow;
 		class LeftArrow;
@@ -63,7 +76,7 @@ namespace BrainFuck
 	class Interpreter::Procedure
 	{
 	public:
-		virtual void Action(strIter&, vectIter&) {};
+		virtual void Action(strIter&, vectIter&) = 0;
 		virtual ProcedureID GetID() { return ProcedureID::None; }
 	};
 
